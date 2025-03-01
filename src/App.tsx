@@ -4,9 +4,8 @@ import {
   Input,
   FreeCanvas,
 } from "@ant-design/pro-editor";
-import { Space } from "antd";
-import { MenuUnfoldOutlined } from "@ant-design/icons";
-import type { Viewport } from "reactflow";
+import { MenuUnfoldOutlined, DownloadOutlined } from "@ant-design/icons";
+import PythonAutoMation from "./books/PythonAutoMation";
 
 function App() {
   return (
@@ -23,16 +22,21 @@ function App() {
           },
           children: (
             <Input
-              addonBefore="选项"
-              placeholder="请输入"
+              addonBefore="搜索"
+              placeholder="请输入关键词"
               style={{ width: 250 }}
             />
           ),
           extra: (
-            <Space>
-              <Button type="primary">保存</Button>
-              <Button type="dashed">导出</Button>
-            </Space>
+            <Button
+              type="primary"
+              icon={<DownloadOutlined />}
+              onClick={() => {
+                alert("导出");
+              }}
+            >
+              导出
+            </Button>
           ),
         }}
         footer={false}
@@ -43,7 +47,7 @@ function App() {
           children: (
             <div style={{ height: "calc(100vh - 68px)" }}>
               <FreeCanvas>
-                <Button>按钮</Button>
+                <PythonAutoMation />
               </FreeCanvas>
             </div>
           ),
