@@ -13,7 +13,7 @@ const CardHeader: React.FC<Props> = ({ title, subtitle }) => {
         background: "linear-gradient(135deg, #ff9a9e, #fad0c4)",
       }}
     >
-      <h1 className="m-0 text-4xl leading-relaxed text-white whitespace-nowrap">
+      <h1 className="m-0 text-4xl font-bold leading-relaxed text-white whitespace-nowrap">
         {title}
         <div>学习笔记📒</div>
       </h1>

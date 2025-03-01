@@ -36,7 +36,7 @@ const CardWrapper: React.FC<Props> = ({
   return (
     <div
       ref={ref}
-      className="box-border overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-500 p-9"
+      className="box-border overflow-hidden bg-gradient-to-r from-[#a1c4fd] to-[#c2e9fb] p-9"
     >
       {children}
     </div>
