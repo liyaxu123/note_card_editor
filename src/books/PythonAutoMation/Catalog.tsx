@@ -116,7 +116,7 @@ const Catalog: React.FC = () => {
   }, [curChapterRef.current]);
 
   return (
-    <CardWrapper>
+    <CardWrapper name="Python自动化_目录">
       <CardContainer>
         <>
           <CardHeader

@@ -62,7 +62,7 @@ f = 5 >= 3            # f=True
 
 const Card1 = () => {
   return (
-    <CardWrapper>
+    <CardWrapper name="第一章：Python基础_Card1">
       <CardContainer>
         <>
           <CardHeader
