@@ -25,7 +25,7 @@ const content2 = `### 🔔 下一步行动建议
 
 const Card4 = () => {
   return (
-    <CardWrapper name="第一章：Python基础_Card1">
+    <CardWrapper name="第一章：Python基础_Card4">
       <CardContainer>
         <>
           <CardHeader

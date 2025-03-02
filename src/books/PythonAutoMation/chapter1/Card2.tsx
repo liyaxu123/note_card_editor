@@ -50,7 +50,7 @@ print(len(s))                   # 输出：6
 
 const Card2 = () => {
   return (
-    <CardWrapper name="第一章：Python基础_Card1">
+    <CardWrapper name="第一章：Python基础_Card2">
       <CardContainer>
         <>
           <CardHeader
