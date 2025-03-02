@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useState } from "react";
 import {
   CardWrapper,
   CardContainer,
@@ -101,19 +101,23 @@ const catalog = [
   },
 ];
 
-// 当前高亮的章节
-const curChapter = "01";
-
 const Catalog: React.FC = () => {
-  const curChapterRef = useRef<HTMLSpanElement>(null);
+  const [currentAnnotation, setCurrentAnnotation] = useState<any>(null);
 
-  useEffect(() => {
-    const el = curChapterRef.current;
-    if (!el) return;
+  const handleChapterClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+    // 清除之前的高亮
+    if (currentAnnotation) {
+      currentAnnotation.remove();
+    }
 
-    const annotation = annotate(el, { type: "highlight", color: "#ffd54f" });
+    // 创建新的高亮
+    const annotation = annotate(e.currentTarget, {
+      type: "highlight",
+      color: "#ffd54f",
+    });
     annotation.show();
-  }, [curChapterRef.current]);
+    setCurrentAnnotation(annotation);
+  };
 
   return (
     <CardWrapper name="Python自动化_目录">
@@ -152,15 +156,11 @@ const Catalog: React.FC = () => {
                               {chapter.number}
                             </span>
                             <span
-                              ref={
-                                chapter.number === curChapter
-                                  ? curChapterRef
-                                  : null
-                              }
+                              className="cursor-pointer"
+                              onClick={handleChapterClick}
                             >
                               {chapter.title}
                             </span>
-                            ​
                           </div>
                         );
                       })}

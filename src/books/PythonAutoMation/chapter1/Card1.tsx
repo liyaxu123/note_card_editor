@@ -5,7 +5,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/Card";
-import { Markdown } from "@ant-design/pro-editor";
+import MyMarkdown from "@/components/MyMarkdown";
 
 const content1 = `### 1. 变量与数据类型
 #### ⭐ 官方定义
@@ -33,8 +33,6 @@ height = 1.75        # "height"盒子里装的是浮点数1.75
 # 布尔类型：只有True或False
 is_student = True    # "is_student"盒子里装的是布尔值True
 \`\`\`
-
-
 `;
 
 const content2 = `### 2. 运算符
@@ -56,8 +54,6 @@ d = 5 > 3             # d=True
 e = 5 == 3            # e=False
 f = 5 >= 3            # f=True
 \`\`\`
-
-
 `;
 
 const Card1 = () => {
@@ -72,12 +68,8 @@ const Card1 = () => {
 
           <CardContent>
             <>
-              <div className="p-5 bg-[#fff5f5] rounded-2xl">
-                <Markdown>{content1}</Markdown>
-              </div>
-              <div className="p-5 bg-[#fff5f5] rounded-2xl">
-                <Markdown>{content2}</Markdown>
-              </div>
+              <MyMarkdown content={content1} />
+              <MyMarkdown content={content2} />
             </>
           </CardContent>
 
