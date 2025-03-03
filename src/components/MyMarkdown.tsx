@@ -3,6 +3,8 @@ import { Markdown } from "@ant-design/pro-editor";
 import MyHighlight, { themeEnum } from "@/components/MyHighlight";
 import { annotate } from "rough-notation";
 import mermaid from "mermaid";
+import { ActionIcon } from "@ant-design/pro-editor";
+import { RetweetOutlined } from "@ant-design/icons";
 
 const markdownComponents = {
   h3: memo((props: any) => {
@@ -22,18 +24,50 @@ const markdownComponents = {
     );
   }),
   pre: memo((props: any) => {
+    const [flag, setFlag] = useState(false);
+
+    useEffect(() => {
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        securityLevel: "loose",
+      });
+      mermaid.run();
+    }, [flag]);
+
     // 绘图
     const className = props.children[0].props.className || "";
     const match = /language-(\w+)/.exec(className || "");
     if (match && match[1] === "mermaid") {
       return (
-        <div
-          className="flex justify-center mermaid"
-          onClick={() => {
-            mermaid.run(); // 重新初始化 mermaid
-          }}
-        >
-          {props.node.children[0].children[0].value}
+        <div className="relative">
+          <div className="absolute top-0 right-0">
+            <ActionIcon
+              title={flag ? "转为代码" : "转为图表"}
+              icon={
+                <RetweetOutlined
+                  style={{
+                    color: flag ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.6)",
+                  }}
+                />
+              }
+              onClick={() => {
+                setFlag(!flag);
+              }}
+            />
+          </div>
+
+          {flag ? (
+            <div className={`flex justify-center ${flag ? "mermaid" : ""}`}>
+              {props.node.children[0].children[0].value}
+            </div>
+          ) : (
+            <MyHighlight
+              code={props.node.children[0].children[0].value}
+              lang="python"
+              theme={themeEnum.andromeeda}
+            />
+          )}
         </div>
       );
     }
@@ -87,15 +121,6 @@ interface MyMarkdownProps {
 }
 
 const MyMarkdown = ({ content, className = "" }: MyMarkdownProps) => {
-  useEffect(() => {
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: "default",
-      securityLevel: "loose",
-    });
-    mermaid.run();
-  }, [content]);
-
   return (
     <div className={`p-5 bg-[#fff5f5] rounded-2xl ${className}`}>
       <Markdown components={markdownComponents}>{content}</Markdown>

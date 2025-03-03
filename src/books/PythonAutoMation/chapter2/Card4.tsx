@@ -37,8 +37,8 @@ const content2 = `### 2.7.2 else 语句
 \`\`\`mermaid
 graph TD
     A[开始] --> B{条件是否成立?}
-    B -->|True| C[执行if代码块]
-    B -->|False| D[执行else代码块]
+    B -->|True| C[执行 if 代码块]
+    B -->|False| D[执行 else 代码块]
     C --> E[结束]
     D --> E[结束]
 \`\`\`

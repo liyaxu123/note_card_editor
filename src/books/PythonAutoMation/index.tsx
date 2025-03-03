@@ -25,6 +25,14 @@ const PythonAutoMation: React.FC = () => {
           <Chapter2.Card2 />
           <Chapter2.Card3 />
           <Chapter2.Card4 />
+          <Chapter2.Card5 />
+          <Chapter2.Card6 />
+          <Chapter2.Card7 />
+          <Chapter2.Card8 />
+          <Chapter2.Card9 />
+          <Chapter2.Card10 />
+          <Chapter2.Card11 />
+          <Chapter2.Card12 />
         </div>
       </div>
     </div>
