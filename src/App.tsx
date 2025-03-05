@@ -7,6 +7,7 @@ import {
 import { MenuUnfoldOutlined, DownloadOutlined } from "@ant-design/icons";
 import PythonAutoMation from "./books/PythonAutoMation";
 import domtoimage from "dom-to-image";
+import CustomCard from "./components/CustomCard";
 
 function App() {
   const exportToImage = () => {
@@ -56,13 +57,18 @@ function App() {
           ),
         }}
         footer={false}
-        leftPannel={{
-          children: <div>Left Pannel</div>,
-        }}
+        leftPannel={false}
         centerPannel={{
           children: (
-            <div style={{ height: "calc(100vh - 68px)" }}>
+            <div
+              className="flex-1 h-full"
+              style={{
+                height: "calc(100vh - 68px)",
+              }}
+            >
               <FreeCanvas>
+                <CustomCard />
+
                 <div id="export-container">
                   <PythonAutoMation />
                 </div>
@@ -71,8 +77,17 @@ function App() {
           ),
         }}
         rightPannel={{
-          minWidth: 200,
-          children: <div>Right Pannel</div>,
+          minWidth: 300,
+          children: (
+            <div
+              className="overflow-auto"
+              style={{
+                height: "calc(100vh - 68px)",
+              }}
+            >
+              <div className="">Right Panel</div>
+            </div>
+          ),
         }}
         bottomPannel={false}
       />
