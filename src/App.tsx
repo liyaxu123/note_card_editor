@@ -7,7 +7,8 @@ import {
 import { MenuUnfoldOutlined, DownloadOutlined } from "@ant-design/icons";
 import PythonAutoMation from "./books/PythonAutoMation";
 import domtoimage from "dom-to-image";
-import CustomCard from "./components/CustomCard";
+// import CustomCard from "./components/CustomCard";
+import { Filter, FilterProvider } from "@/components/Filter";
 
 function App() {
   const exportToImage = () => {
@@ -67,8 +68,6 @@ function App() {
               }}
             >
               <FreeCanvas>
-                <CustomCard />
-
                 <div id="export-container">
                   <PythonAutoMation />
                 </div>
@@ -86,6 +85,9 @@ function App() {
               }}
             >
               <div className="">Right Panel</div>
+              <FilterProvider>
+                <Filter />
+              </FilterProvider>
             </div>
           ),
         }}

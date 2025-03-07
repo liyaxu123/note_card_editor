@@ -14,7 +14,7 @@ const content1 = `## 2.7 控制流语句
 
 #### 🚥 流程图
 \`\`\`mermaid
-graph TD
+graph LR
     A[开始] --> B{条件是否成立?}
     B -->|True| C[执行代码块]
     B -->|False| D[跳过代码块]
@@ -35,7 +35,8 @@ const content2 = `### 2.7.2 else 语句
 
 #### 🚥 流程图
 \`\`\`mermaid
-graph TD
+graph LR
+    A-->B
     A[开始] --> B{条件是否成立?}
     B -->|True| C[执行 if 代码块]
     B -->|False| D[执行 else 代码块]

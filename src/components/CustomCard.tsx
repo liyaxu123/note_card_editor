@@ -37,10 +37,10 @@ is_student = True    # "is_student"盒子里装的是布尔值True
 `;
 
 const customStyles = {
-  h3: "!text-4xl",
-  h4: "!text-[31px] !mb-9",
-  p: "!text-[24px]",
-  blockquote: "bg-blue-100 rounded-xl !py-1 !my-9 !border-l-[10px] !border-blue-500",
+  h3: "!text-base !mb-0",
+  h4: "!my-0 !mb-0 !text-[14px]",
+  p: "!text-xs",
+  blockquote: "!my-0",
   li: "!text-[24px]",
   pre: "!text-[24px]",
   code: "!text-[24px]",
@@ -48,17 +48,15 @@ const customStyles = {
 
 const CustomCard: React.FC = () => {
   return (
-    <CustomCardWrapper
-      name="xxx"
-      className="w-[1240px] h-[1654px] flex flex-col"
-    >
+    <CustomCardWrapper name="xxx" className="w-[620px] h-[827px] flex flex-col">
       <CardContainer className="flex flex-col flex-1">
         <>
           <CardHeader
             title="《Python编程快速上手—让繁琐工作自动化第2版》"
             subtitle="第一章：Python基础"
-            titleClassName="text-5xl"
-            subtitleClassName="text-3xl"
+            titleClassName="text-xl"
+            subtitleClassName="text-base my-0"
+            className="!p-3"
           />
 
           <CardContent className="flex-1">
