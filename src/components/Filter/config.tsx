@@ -36,6 +36,16 @@ export const filterOptions: FilterOption[] = [
     label: "工作项目",
     formItem: {
       type: FormItemType.Select,
+      options: [
+        {
+          label: "项目1",
+          value: "project1",
+        },
+        {
+          label: "项目2",
+          value: "project2",
+        },
+      ],
     },
   },
   {
@@ -43,6 +53,20 @@ export const filterOptions: FilterOption[] = [
     label: "状态",
     formItem: {
       type: FormItemType.CheckboxGroup,
+      options: [
+        {
+          label: "待办",
+          value: "todo",
+        },
+        {
+          label: "进行中",
+          value: "inProgress",
+        },
+        {
+          label: "已完成",
+          value: "done",
+        },
+      ],
     },
   },
   {
@@ -50,6 +74,24 @@ export const filterOptions: FilterOption[] = [
     label: "优先级",
     formItem: {
       type: FormItemType.RadioGroup,
+      options: [
+        {
+          label: "紧急",
+          value: "urgent'",
+        },
+        {
+          label: "高",
+          value: "high",
+        },
+        {
+          label: "中",
+          value: "medium",
+        },
+        {
+          label: "低",
+          value: "low",
+        },
+      ],
     },
   },
   {
@@ -57,6 +99,20 @@ export const filterOptions: FilterOption[] = [
     label: "标签",
     formItem: {
       type: FormItemType.SelectMultiple,
+      options: [
+        {
+          label: "标签1",
+          value: "tag1",
+        },
+        {
+          label: "标签2",
+          value: "tag2",
+        },
+        {
+          label: "标签3",
+          value: "tag3",
+        },
+      ],
     },
   },
   {
@@ -64,6 +120,20 @@ export const filterOptions: FilterOption[] = [
     label: "迭代",
     formItem: {
       type: FormItemType.Select,
+      options: [
+        {
+          label: "迭代1",
+          value: "iteration1",
+        },
+        {
+          label: "迭代2",
+          value: "iteration2",
+        },
+        {
+          label: "迭代3",
+          value: "iteration3",
+        },
+      ],
     },
   },
   {
@@ -71,6 +141,20 @@ export const filterOptions: FilterOption[] = [
     label: "状态阶段",
     formItem: {
       type: FormItemType.Select,
+      options: [
+        {
+          label: "计划",
+          value: "plan",
+        },
+        {
+          label: "进行中",
+          value: "inProgress",
+        },
+        {
+          label: "已完成",
+          value: "done",
+        },
+      ],
     },
   },
   {
@@ -78,6 +162,20 @@ export const filterOptions: FilterOption[] = [
     label: "创建人",
     formItem: {
       type: FormItemType.UserSelect,
+      options: [
+        {
+          label: "张三",
+          value: "zs",
+        },
+        {
+          label: "李四",
+          value: "ls",
+        },
+        {
+          label: "王五",
+          value: "ww",
+        },
+      ],
     },
   },
   {
@@ -85,6 +183,20 @@ export const filterOptions: FilterOption[] = [
     label: "处理人",
     formItem: {
       type: FormItemType.UserSelect,
+      options: [
+        {
+          label: "张三",
+          value: "zs",
+        },
+        {
+          label: "李四",
+          value: "ls",
+        },
+        {
+          label: "王五",
+          value: "ww",
+        },
+      ],
     },
   },
 ];

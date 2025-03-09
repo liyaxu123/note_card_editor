@@ -27,6 +27,7 @@ export interface FilterCondition {
   value: any; // 筛选条件值
   label: string; // 筛选条件名称
   formItem: FormItem; // 表单项类型
+  isSubmit: boolean; // 是否已提交
 }
 
 interface FilterContextType {
