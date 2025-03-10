@@ -63,6 +63,7 @@ const Filter: React.FC<FilterComponentProps> = ({ onFilterChange }) => {
       label: filterOption.label,
       formItem: filterOption.formItem,
       isSubmit: false, // 默认未提交
+      valueLabel: "",
     };
     setConditions([...conditions, newCondition]);
   };
@@ -93,10 +94,10 @@ const Filter: React.FC<FilterComponentProps> = ({ onFilterChange }) => {
   };
 
   // 更新筛选条件值
-  const updateConditionValue = (id: string, value: any) => {
+  const updateConditionValue = (id: string, value: any, valueLabel: any) => {
     setConditions(
       conditions.map((condition) =>
-        condition.id === id ? { ...condition, value } : condition
+        condition.id === id ? { ...condition, value, valueLabel } : condition
       )
     );
   };
@@ -112,17 +113,22 @@ const Filter: React.FC<FilterComponentProps> = ({ onFilterChange }) => {
           <Input
             placeholder={formItem.placeholder || "请输入"}
             defaultValue={value || formItem.defaultValue}
-            onChange={(e) => updateConditionValue(condition.id, e.target.value)}
+            onChange={(e) =>
+              updateConditionValue(condition.id, e.target.value, e.target.value)
+            }
           />
         );
       case FormItemType.Select:
         return (
           <Select
+            labelInValue
             defaultValue={value || formItem.defaultValue}
             options={formItem.options || []}
             placeholder={formItem.placeholder || "请选择"}
             style={{ width: "100%" }}
-            onChange={(value) => updateConditionValue(condition.id, value)}
+            onChange={({ value, label }) => {
+              updateConditionValue(condition.id, value, label);
+            }}
           />
         );
       case FormItemType.CheckboxGroup:
@@ -131,7 +137,19 @@ const Filter: React.FC<FilterComponentProps> = ({ onFilterChange }) => {
             <Checkbox.Group
               defaultValue={value || formItem.defaultValue}
               options={formItem.options || []}
-              onChange={(value) => updateConditionValue(condition.id, value)}
+              onChange={(value) => {
+                let labels: any[] = [];
+                value.forEach((val) => {
+                  const obj = formItem.options?.find(
+                    (item) => item.value === val
+                  );
+                  if (obj?.label) {
+                    labels.push(obj.label);
+                  }
+                });
+
+                updateConditionValue(condition.id, value, labels.join("、"));
+              }}
             />
           </div>
         );
@@ -141,33 +159,46 @@ const Filter: React.FC<FilterComponentProps> = ({ onFilterChange }) => {
             <Radio.Group
               defaultValue={value || formItem.defaultValue}
               options={formItem.options || []}
-              onChange={(e) =>
-                updateConditionValue(condition.id, e.target.value)
-              }
+              onChange={(e) => {
+                const label = formItem.options?.find(
+                  (item) => item.value === e.target.value
+                )!.label;
+                updateConditionValue(condition.id, e.target.value, label);
+              }}
             />
           </div>
         );
       case FormItemType.SelectMultiple:
         return (
           <Select
-            defaultValue={value || formItem.defaultValue}
+            labelInValue
             mode="multiple"
+            defaultValue={value || formItem.defaultValue}
             options={formItem.options || []}
             placeholder={formItem.placeholder || "请选择"}
             style={{ width: "100%" }}
-            onChange={(value) => updateConditionValue(condition.id, value)}
+            onChange={(value) => {
+              const vals = value.map((item: any) => item.value);
+              const labels = value.map((item: any) => item.label).join("、");
+              updateConditionValue(condition.id, vals, labels);
+            }}
           />
         );
       case FormItemType.UserSelect:
         return (
           <Select
+            labelInValue
             defaultValue={value || formItem.defaultValue}
             showSearch
             mode="multiple"
             options={formItem.options || []}
             placeholder={formItem.placeholder || "请选择"}
             style={{ width: "100%" }}
-            onChange={(value) => updateConditionValue(condition.id, value)}
+            onChange={(value) => {
+              const vals = value.map((item: any) => item.value);
+              const labels = value.map((item: any) => item.label).join("、");
+              updateConditionValue(condition.id, vals, labels);
+            }}
           />
         );
       default:
@@ -175,7 +206,9 @@ const Filter: React.FC<FilterComponentProps> = ({ onFilterChange }) => {
           <Input
             placeholder="请输入"
             defaultValue={value || formItem.defaultValue}
-            onChange={(e) => updateConditionValue(condition.id, e.target.value)}
+            onChange={(e) =>
+              updateConditionValue(condition.id, e.target.value, e.target.value)
+            }
           />
         );
     }
@@ -195,7 +228,6 @@ const Filter: React.FC<FilterComponentProps> = ({ onFilterChange }) => {
       ...condition,
       isSubmit: true,
     }));
-    console.log(resConditions);
     setConditions(resConditions);
     onFilterChange?.(resConditions);
     setOpen(false);

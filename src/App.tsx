@@ -8,7 +8,7 @@ import { MenuUnfoldOutlined, DownloadOutlined } from "@ant-design/icons";
 import PythonAutoMation from "./books/PythonAutoMation";
 import domtoimage from "dom-to-image";
 // import CustomCard from "./components/CustomCard";
-import { Filter, FilterProvider } from "@/components/Filter";
+import { Filter, FilterInfoBar, FilterProvider } from "@/components/Filter";
 
 function App() {
   const exportToImage = () => {
@@ -26,6 +26,10 @@ function App() {
       .catch(function (error: any) {
         console.error("oops, something went wrong!", error);
       });
+  };
+
+  const onFilterChange = (conditions: any) => {
+    console.log("筛选条件：", conditions);
   };
 
   return (
@@ -76,7 +80,7 @@ function App() {
           ),
         }}
         rightPannel={{
-          minWidth: 300,
+          minWidth: 600,
           children: (
             <div
               className="overflow-auto"
@@ -86,7 +90,8 @@ function App() {
             >
               <div className="">Right Panel</div>
               <FilterProvider>
-                <Filter />
+                <Filter onFilterChange={onFilterChange} />
+                <FilterInfoBar onFilterChange={onFilterChange} />
               </FilterProvider>
             </div>
           ),
