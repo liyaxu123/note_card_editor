@@ -4,11 +4,14 @@ import {
   Input,
   FreeCanvas,
 } from "@ant-design/pro-editor";
+import { Input as AntdInput } from "antd";
 import { MenuUnfoldOutlined, DownloadOutlined } from "@ant-design/icons";
 import PythonAutoMation from "./books/PythonAutoMation";
 import domtoimage from "dom-to-image";
 // import CustomCard from "./components/CustomCard";
 import { Filter, FilterInfoBar, FilterProvider } from "@/components/Filter";
+
+const { TextArea } = AntdInput;
 
 function App() {
   const exportToImage = () => {
@@ -80,7 +83,7 @@ function App() {
           ),
         }}
         rightPannel={{
-          minWidth: 600,
+          minWidth: 300,
           children: (
             <div
               className="overflow-auto"
@@ -93,6 +96,11 @@ function App() {
                 <Filter onFilterChange={onFilterChange} />
                 <FilterInfoBar onFilterChange={onFilterChange} />
               </FilterProvider>
+
+              <TextArea
+                autoSize
+                value="我是一名小红书博主，正在做学习笔记内容的分享，希望通过简单易懂和生动有趣的图文教程帮助零基础小白快速掌握一门知识。请你结合我的账号定位和这本书的第3章内容，按照第3章目录的先后顺序，为我详细讲解每一个知识点，然后帮我整理一份学习笔记。每一个知识点要包括它的定义、大白话理解、代码示例，如果有流程请使用markdown的语法为我画出mermaid流程图，如果使用到了系统内的函数比如 print 函数，请列出它的参数及含义，含义要尽可能的通俗易懂。"
+              />
             </div>
           ),
         }}
