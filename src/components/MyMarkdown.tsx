@@ -153,6 +153,17 @@ const MyMarkdown = ({
         </strong>
       );
     }),
+    img: memo((props: any) => {
+      return (
+        <div className="flex justify-center items-center rounded-xl border">
+          <img
+            src={props.src}
+            alt={props.alt}
+            className={`!text-[18px] !not-italic !mb-3 ${styleConfig.p || ""}`}
+          />
+        </div>
+      );
+    }),
   };
 
   return (
