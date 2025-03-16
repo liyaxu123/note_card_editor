@@ -3,7 +3,8 @@ import Catalog from "./Catalog";
 import Chapter1 from "./chapter1";
 // import Chapter2 from "./chapter2";
 // import Chapter3 from "./chapter3";
-import Chapter4 from "./chapter4";
+// import Chapter4 from "./chapter4";
+import Chapter5 from "./chapter5";
 
 const PythonAutoMation: React.FC = () => {
   return (
@@ -49,7 +50,7 @@ const PythonAutoMation: React.FC = () => {
         </div>
       </div> */}
 
-      <div className="flex flex-col gap-40 p-40 bg-gray-50 rounded-3xl">
+      {/* <div className="flex flex-col gap-40 p-40 bg-gray-50 rounded-3xl">
         <h2 className="text-7xl font-bold text-center">第 4 章 列表</h2>
         <div className="flex gap-40 items-start">
           <Chapter4.Card1 />
@@ -65,6 +66,17 @@ const PythonAutoMation: React.FC = () => {
           <Chapter4.Card11 />
           <Chapter4.Card12 />
           <Chapter4.Card13 />
+        </div>
+      </div> */}
+
+      <div className="flex flex-col gap-40 p-40 bg-gray-50 rounded-3xl">
+        <h2 className="text-7xl font-bold text-center">第 5 章 字典和结构化数据</h2>
+        <div className="flex gap-40 items-start">
+          <Chapter5.Card1 />
+          <Chapter5.Card2 />
+          <Chapter5.Card3 />
+          <Chapter5.Card4 />
+          <Chapter5.Card5 />
         </div>
       </div>
     </div>
